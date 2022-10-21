@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import { Redirect } from 'react-router-dom';
-
 import './NewTodo.css';
 
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions/actionTypes';
 
+import * as actionCreators from '../../../store/actions/index';
 class NewTodo extends Component {
   state = {
     title: '',
@@ -42,8 +40,8 @@ class NewTodo extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     onStoreTodo: (title, content) =>
-      dispatch({ type: actionTypes.ADD_TODO, title: title, content: content }),
-  }
+      dispatch(actionCreators.postTodo({title: title, content: content})),
+  };
 };
 
 export default connect(null, mapDispatchToProps)(NewTodo);

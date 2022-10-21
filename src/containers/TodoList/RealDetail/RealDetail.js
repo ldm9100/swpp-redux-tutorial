@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './RealDetail.css';
 
 import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions/actionTypes';
 
+import * as actionCreators from '../../../store/actions/index';
 class RealDetail extends Component {
 
   componentDidMount() {
@@ -49,9 +49,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetTodo: id =>
-      dispatch({ type: actionTypes.GET_TODO, targetID: id }),
-  }
-}
+    onGetTodo: (id) =>
+      dispatch(actionCreators.getTodo(id)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RealDetail);
